@@ -6,7 +6,7 @@ import org.jboss.as.security.vault.VaultSession;
 @Builder
 public class VaultManager {
 
-  private VaultSession vaultSession;
+  private VaultMgmtSession vaultSession;
   private String keystoreURL;
   private String keystorePassword;
   private String encryptionDirectory;
@@ -14,17 +14,20 @@ public class VaultManager {
   @Builder.Default private int iterationCount = 10;
   @Builder.Default private boolean createKeystore = false;
 
-  protected VaultSession getVaultSession() throws VaultException {
+  protected VaultMgmtSession getVaultSession() throws VaultException {
     if (this.vaultSession == null) {
       try {
+         System.out.println("keystore password: "+keystorePassword);
+
         vaultSession =
-            new VaultSession(
+            new VaultMgmtSession(
                 keystoreURL,
                 keystorePassword,
                 encryptionDirectory,
                 salt,
                 iterationCount,
                 createKeystore);
+
         vaultSession.startVaultSession("vault");
       } catch (Exception e) {
         throw new VaultException("Failed to initialize vault session: " + e.getMessage(), e);
@@ -35,7 +38,7 @@ public class VaultManager {
 
   public void storeSecret(String vaultBlock, String attributeName, String value)
       throws VaultException {
-    VaultSession vaultSession = this.getVaultSession();
+    VaultMgmtSession vaultSession = this.getVaultSession();
     try {
       vaultSession.addSecuredAttributeWithDisplay(vaultBlock, attributeName, value.toCharArray());
     } catch (Exception e) {

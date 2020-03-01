@@ -60,7 +60,7 @@ public abstract class AbstractCommand<V> implements Callable<V> {
         .encryptionDirectory(this.encryptionDirectory)
         .salt(this.salt)
         .createKeystore(this.createKeystore)
-        .keystorePassword("MASK-" + this.keyStorePassword)
+        .keystorePassword(this.keyStorePassword)
         .build();
   }
 

@@ -29,14 +29,14 @@ public class VaultManagerTest {
                 .encryptionDirectory(testVaultDir)
                 .salt("12345678")
                 .createKeystore(true)
-                .keystorePassword("MASK-12345678")
+                .keystorePassword("12345678")
                 .build();
 
     }
 
     @Test
     public void testGetVaultSession() throws Exception {
-        VaultSession session = vaultManager.getVaultSession();
+        VaultMgmtSession session = vaultManager.getVaultSession();
         assert session!=null;
     }
     @Test

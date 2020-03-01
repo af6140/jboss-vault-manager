@@ -9,7 +9,7 @@ import picocli.CommandLine;
     name = "vault",
     mixinStandardHelpOptions = true,
     description = "Manage jboss vault and secrets",
-    subcommands = {StoreSecret.class, RetrieveSecret.class, RemoveSecret.class, CheckSecret.class})
+    subcommands = {StoreSecret.class, RetrieveSecret.class, RemoveSecret.class, CheckSecret.class, GetVaultConfig.class})
 public class Vault implements Callable {
 
   @SuppressWarnings("unused")
