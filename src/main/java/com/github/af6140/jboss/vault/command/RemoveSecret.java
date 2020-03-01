@@ -5,19 +5,26 @@ import org.springframework.stereotype.Component;
 import picocli.CommandLine;
 
 @Component
-@CommandLine.Command(name="remove", mixinStandardHelpOptions = true)
+@CommandLine.Command(name = "remove", mixinStandardHelpOptions = true)
 public class RemoveSecret extends AbstractCommand {
-    @CommandLine.Option(names = {"-b", "--block"}, required = true, description = "Vault block")
-    private String vaultBlock;
+  @SuppressWarnings("unused")
+  @CommandLine.Option(
+      names = {"-b", "--block"},
+      required = true,
+      description = "Vault block")
+  private String vaultBlock;
 
-    @CommandLine.Option(names = {"-n", "--name"}, required = true, description = "Secret name")
-    private String secretName;
+  @SuppressWarnings("unused")
+  @CommandLine.Option(
+      names = {"-n", "--name"},
+      required = true,
+      description = "Secret name")
+  private String secretName;
 
-
-    @Override
-    public Boolean call() throws Exception {
-        VaultManager manager= this.buildVoltManager();
-        boolean removed = manager.removeSecret(this.vaultBlock, this.secretName);
-        return removed;
-    }
+  @Override
+  public Boolean call() throws Exception {
+    VaultManager manager = this.buildVoltManager();
+    boolean removed = manager.removeSecret(this.vaultBlock, this.secretName);
+    return removed;
+  }
 }
