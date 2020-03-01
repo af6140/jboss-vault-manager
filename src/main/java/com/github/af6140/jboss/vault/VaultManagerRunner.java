@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import picocli.CommandLine;
 
 @Component
+@SuppressWarnings("unused")
 public class VaultManagerRunner implements CommandLineRunner, ExitCodeGenerator {
 
     private final CommandLine.IFactory factory; // auto-configured to inject PicocliSpringFactory
@@ -16,14 +17,13 @@ public class VaultManagerRunner implements CommandLineRunner, ExitCodeGenerator 
     private int exitCode;
 
     public VaultManagerRunner(Vault vault, CommandLine.IFactory factory) {
-
         this.factory = factory;
         this.vault= vault;
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        exitCode = new CommandLine(new Vault(), factory)
+    public void run(String... args) {
+        exitCode = new CommandLine(vault, factory)
                 .execute(args);
     }
 

@@ -7,24 +7,29 @@ import picocli.CommandLine;
 
 @Getter
 public abstract class AbstractCommand<V> implements Callable<V> {
+
+  @SuppressWarnings("unused")
   @CommandLine.Option(
       names = {"--keystore", "-k"},
       required = true,
       description = "Vault keystore")
   private String keyStoreURL;
 
+  @SuppressWarnings("unused")
   @CommandLine.Option(
       names = {"--keystorePassword", "-p"},
       required = true,
       description = "Vault keystore password")
   private String keyStorePassword;
 
+  @SuppressWarnings("unused")
   @CommandLine.Option(
       names = {"--vaultDirectory", "-d"},
       required = true,
       description = "Vault directory")
   private String encryptionDirectory;
 
+  @SuppressWarnings("unused")
   @CommandLine.Option(
       names = {"--salt", "-s"},
       required = true,
@@ -32,6 +37,7 @@ public abstract class AbstractCommand<V> implements Callable<V> {
       description = "Salt")
   private String salt;
 
+  @SuppressWarnings("unused")
   @CommandLine.Option(
       names = {"--iteration", "-i"},
       required = true,
@@ -39,6 +45,7 @@ public abstract class AbstractCommand<V> implements Callable<V> {
       description = "iteration")
   private int iterationCount;
 
+  @SuppressWarnings("unused")
   @CommandLine.Option(
       names = {"--createKeystore", "-c"},
       required = true,

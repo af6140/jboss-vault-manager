@@ -11,6 +11,7 @@ import picocli.CommandLine;
     subcommands = {StoreSecret.class, RetrieveSecret.class, RemoveSecret.class, CheckSecret.class})
 public class Vault implements Callable {
 
+  @SuppressWarnings("unused")
   @CommandLine.Parameters(index = "0", description = "main command")
   private String mainCommand;
 
