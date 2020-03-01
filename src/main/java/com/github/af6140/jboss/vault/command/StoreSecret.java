@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import picocli.CommandLine;
 
 @Component
-@CommandLine.Command(name = "set", mixinStandardHelpOptions = true)
+@CommandLine.Command(name = "set", mixinStandardHelpOptions = true, description = "Store secret")
 public class StoreSecret extends AbstractCommand {
 
   @SuppressWarnings("unused")

@@ -7,7 +7,9 @@
     <groupId>com.github.af6140.jboss</groupId>
     <artifactId>create-vault</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <properties>
+        <skipTests>true</skipTests>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
