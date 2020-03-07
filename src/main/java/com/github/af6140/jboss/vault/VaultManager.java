@@ -26,6 +26,8 @@ public class VaultManager {
                 iterationCount,
                 createKeystore);
 
+        // the alias is passed on as handshake options, but it's not used in picketbox
+        // implementation
         vaultSession.startVaultSession("vault");
       } catch (Exception e) {
         throw new VaultException("Failed to initialize vault session: " + e.getMessage(), e);
@@ -58,18 +60,18 @@ public class VaultManager {
   }
 
   public boolean secretExists(String vaultBlock, String attribute) throws VaultException {
-      try {
-          return this.getVaultSession().checkSecuredAttribute(vaultBlock, attribute);
-      } catch (Exception e) {
-          throw new VaultException("Failed to check secret: " + e.getMessage(), e);
-      }
+    try {
+      return this.getVaultSession().checkSecuredAttribute(vaultBlock, attribute);
+    } catch (Exception e) {
+      throw new VaultException("Failed to check secret: " + e.getMessage(), e);
+    }
   }
 
   public boolean removeSecret(String vaultBlock, String attribute) throws VaultException {
-      try {
-          return this.getVaultSession().removeSecuredAttribute(vaultBlock, attribute);
-      } catch (Exception e) {
-          throw new VaultException("Failed to retrieve secret: " + e.getMessage(), e);
-      }
+    try {
+      return this.getVaultSession().removeSecuredAttribute(vaultBlock, attribute);
+    } catch (Exception e) {
+      throw new VaultException("Failed to retrieve secret: " + e.getMessage(), e);
+    }
   }
 }

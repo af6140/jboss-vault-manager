@@ -62,6 +62,8 @@ public class VaultManagerTest {
         String expectedAttribute = "haveagoodday";
         this.vaultManager.storeSecret(defaultVaultBlock, expectedAttribute, "dummy");
         assert this.vaultManager.secretExists(defaultVaultBlock,expectedAttribute);
+        assert !this.vaultManager.secretExists(defaultVaultBlock,expectedAttribute+"noway");
+
     }
 
     @Test
@@ -69,5 +71,6 @@ public class VaultManagerTest {
         String expectedAttribute = "toberemoved";
         this.vaultManager.storeSecret(defaultVaultBlock, expectedAttribute, "dummy");
         assert this.vaultManager.removeSecret(defaultVaultBlock,expectedAttribute);
+        assert !this.vaultManager.secretExists(defaultVaultBlock,expectedAttribute);
     }
 }
