@@ -17,8 +17,6 @@ public class VaultManager {
   protected VaultMgmtSession getVaultSession() throws VaultException {
     if (this.vaultSession == null) {
       try {
-         System.out.println("keystore password: "+keystorePassword);
-
         vaultSession =
             new VaultMgmtSession(
                 keystoreURL,
